@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { conectMongoDb } from "@/libs/mongodb";
 import { messages } from "@/utils/message";
-import { isValidElement } from "react";
 import { isValidEmail } from "@/utils/isValidEmail";
 
 export async function POST(request: NextRequest) {
@@ -34,5 +33,15 @@ export async function POST(request: NextRequest) {
                 }
             )
         }
-    } catch(error){}
+
+        //Validaciones de las contraseñas 
+        if(password !== confirmPassword){
+            return NextResponse.json(
+                {messages: messages.error.failPassword},
+                {status: 404}
+            )
+        }
+    } catch(error){
+        console.log(error)
+    }
 }
