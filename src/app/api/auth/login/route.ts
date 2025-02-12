@@ -3,6 +3,7 @@ import User, { IUser } from "@/models/User";
 import { messages } from "@/utils/message";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
 
 
 export async function POST(request: NextRequest){
@@ -43,7 +44,35 @@ export async function POST(request: NextRequest){
             );
         }
 
+        const { password: userPass, ...rest} = userFind._doc;
 
+        const token = jwt.sign({data: rest}, "secreto", {
+            expiresIn: 86400,
+        });
 
-    } catch (error){}
+        const response = NextResponse.json(
+            {userLogged: rest, message: messages.success.userLogged},
+            {status: 200}
+        );
+
+        response.cookies.set("auth_cookie", token, {
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            maxAge: 86400,
+            path: "/"
+        });
+
+        return response;
+
+    } catch (error){
+        console.error("Error en el registro: ", error)
+        return NextResponse.json(
+            {
+                message: messages.error.default
+            },
+            {
+                status: 500
+            }
+        );
+    }
 }
