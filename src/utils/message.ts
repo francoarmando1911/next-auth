@@ -7,10 +7,14 @@ export const messages = {
         default: "Ocurrio un error",
         userNotFound: "Usuario no encontrado",
         incorrectPassword: "Contraseña incorrecta",
-
+        notAuthorized: "No autorizado",
+        passwordNoMatch: "Las contraseñas no coinciden",
+        tokenNotValid: "El token no es valido"
     },
     success: {
         userCreate: "Usuario creado correctamente",
         userLogged: "Usuario logueado correctamente!",
+        emailSent: "Correo enviado correctamente!",
+        passwordChanged: "Contraseña modificada correctamente"
     },
 }
