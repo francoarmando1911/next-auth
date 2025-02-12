@@ -4,7 +4,10 @@ export const messages = {
         failEmail: "Email incorrecto",
         failPassword: "Contraseña incorrecta",
         emailExist: "Ya existe un usuario con ese correo",
-        default: "Ocurrio un error"
+        default: "Ocurrio un error",
+        userNotFound: "Usuario no encontrado",
+        incorrectPassword: "Contraseña incorrecta",
+        
     },
     success: {
         userCreate: "Usuario creado correctamente"

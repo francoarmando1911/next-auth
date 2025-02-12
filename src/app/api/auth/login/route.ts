@@ -1,8 +1,8 @@
 import { conectMongoDb } from "@/libs/mongodb";
-import { IUser } from "@/models/User";
+import User, { IUser } from "@/models/User";
 import { messages } from "@/utils/message";
 import { NextRequest, NextResponse } from "next/server";
-
+import bcrypt from "bcryptjs"
 
 
 export async function POST(request: NextRequest){
@@ -19,6 +19,31 @@ export async function POST(request: NextRequest){
                 {status : 400}
             );
         }
+
+        const userFind = await User.findOne({email});
+
+        //Validamos que exista el usuario por el correo 
+        if(!userFind) {
+            return NextResponse.json(
+                {message: messages.error.userNotFound},
+                {status: 400}
+            );
+        }
+
+        //Si el usuario es correcto, validamos que la contraseña asociada a ese usuario sea correcta
+        const isCorrect: boolean = await bcrypt.compare(
+            password,
+            userFind.password
+        );
+
+        if(!isCorrect){
+            return NextResponse.json(
+                { message: messages.error.incorrectPassword },
+                { status: 400 }
+            );
+        }
+
+
 
     } catch (error){}
 }
