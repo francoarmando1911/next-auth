@@ -15,6 +15,7 @@ export const messages = {
         userCreate: "Usuario creado correctamente",
         userLogged: "Usuario logueado correctamente!",
         emailSent: "Correo enviado correctamente!",
-        passwordChanged: "Contraseña modificada correctamente"
+        passwordChanged: "Contraseña modificada correctamente",
+        authorized: "Autorizado"
     },
 }
