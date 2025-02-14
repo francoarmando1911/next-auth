@@ -12,6 +12,16 @@ export default function LoginPage() {
         placeholder='Name...'
         type='text'
       />
+      <Form.Footer 
+        description="Te olvidaste tu contraseña: "
+        link='/forget-password'
+        textLink="Recuperar contraseña"
+      />
+      <Form.Footer
+        description="Aun no tienes cuenta? "
+        link='/register'
+        textLink="Registrarse"        
+      />
 
     </Form>
     </>
