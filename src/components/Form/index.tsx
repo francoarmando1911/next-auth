@@ -2,8 +2,8 @@
 
 import { createContext, useState } from "react"
 import styles from './styles.module.scss'
-import { Input } from "./components/input"
-import { Footer } from "./components/Footer"
+import { Footer, Input, SubmitButton } from "./components"
+
 
 type FormValues = Record<string, string>
 
@@ -44,3 +44,4 @@ export function Form ({title, description, onSubmit, children} : FormProps){
 
 Form.Input = Input
 Form.Footer = Footer
+Form.SubmitButton = SubmitButton

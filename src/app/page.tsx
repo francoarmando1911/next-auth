@@ -5,12 +5,27 @@ import { Form } from "@/components/Form";
 export default function LoginPage() {
   return (
     <>
-    <Form title="Login" onSubmit={() => {}}>
-      <Form.Input
-        label='Label'
-        name='name'
-        placeholder='Name...'
-        type='text'
+      <Form 
+        title="Iniciar Sesión" 
+        onSubmit={() => {}}
+        description="Formulario para iniciar sesión"  
+      >
+      <div className="my-[10px] flex flex-col gap-4">
+          <Form.Input
+            label='Correo'
+            name='email'
+            placeholder='Ingresa tu correo...'
+            type='text'
+          />
+          <Form.Input
+            label='Contraseña'
+            name='password'
+            placeholder='Ingresa tu contraseña...'
+            type='password'
+          />
+      </div>
+      <Form.SubmitButton
+          buttonText="Iniciar Sesión"
       />
       <Form.Footer 
         description="Te olvidaste tu contraseña: "
