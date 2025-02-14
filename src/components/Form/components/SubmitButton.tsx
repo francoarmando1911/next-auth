@@ -1,3 +1,4 @@
+import { Loader } from '@/components/Loader'
 import styles from './styles.module.scss'
 
 interface SubmitButtonProps{
