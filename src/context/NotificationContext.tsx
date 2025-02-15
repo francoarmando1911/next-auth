@@ -1,9 +1,8 @@
 'use client'
 
 import { Notification } from '@/components/Notification'
+import { StatusNotification } from '@/interfaces'
 import { createContext, JSX, useState, ReactNode, FC } from 'react'
-
-export type StatusNotification = 'error' | 'success' | null
 
 interface IState {
     open: boolean

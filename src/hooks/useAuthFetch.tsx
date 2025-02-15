@@ -1,5 +1,7 @@
+import NotificationContext from '@/context/NotificationContext'
 import axios, {AxiosRequestConfig} from 'axios'
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
 
 interface AuthFetchProps {
     endpoint: string
@@ -9,6 +11,12 @@ interface AuthFetchProps {
 }
 
 export function useAuthFetch(){
+
+    const { showNotification } = useContext(NotificationContext)
+
+
+
+
     const router = useRouter()
 
     const authRouter = async ({
