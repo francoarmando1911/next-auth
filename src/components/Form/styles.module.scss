@@ -1,22 +1,41 @@
-.form{
-    width: fit-content;
+.form {
+    width: 100%;
+    max-width: 600px;
     padding: 2rem;
-    border: .5px solid #878787;
+    border: 0.5px solid #878787;
     border-radius: 10px;
-    min-width: 450px;
-    background-color: #858585;
+    min-width: 300px;
+    background-color: #c7c5c5;
+    margin: 0 auto;
+    /* Centrar en la pantalla */
 
-    .descriptionContainer{
+    .descriptionContainer {
         text-align: left;
 
-        h2{
+        h2 {
             font-weight: 700;
             font-size: 25px;
         }
 
-        p{
+        p {
             font-weight: 400;
             font-size: 16px;
         }
+    }
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 480px) {
+    .form {
+        padding: 1.5rem;
+        //min-width: unset;
+    }
+
+    .descriptionContainer h2 {
+        font-size: 22px;
+    }
+
+    .descriptionContainer p {
+        font-size: 14px;
     }
 }
