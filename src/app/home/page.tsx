@@ -1,13 +1,17 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { dateTransform } from "@/utils/dateTransform";
 
-async function getData() {
-  const res = await fetch("http://localhost:3000/api/users");
+export default function HomePage() {
+  const [users, setUsers] = useState([]);
 
-  return res.json();
-}
-
-export default async function HomePage() {
-  const { users } = await getData();
+  useEffect(() => {
+    fetch("/api/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data.users))
+      .catch((error) => console.error("Error fetching users:", error));
+  }, []);
 
   return (
     <main className="p-4">

@@ -5,8 +5,9 @@ import { useAuthFetch } from "@/hooks/useAuthFetch";
 import { useLoading } from "@/hooks/useLoading";
 import { AxiosRequestConfig } from "axios";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function LoginPage() {
+function ChangePasswordForm() {
   const { finishLoading, isLoading, startLoading } = useLoading();
   const searchParams = useSearchParams();
   const authFetch = useAuthFetch();
@@ -18,7 +19,7 @@ export default function LoginPage() {
 
     const options: AxiosRequestConfig<any> = {
       headers: {
-        token, 
+        token,
       },
     };
 
@@ -33,28 +34,34 @@ export default function LoginPage() {
   };
 
   return (
-    <>
-      <Form
-        title="Cambiar tu contraseña"
-        onSubmit={changePassword}
-        description="Formulario para cambiar tu contraseña"
-      >
-        <div className="my-[10px] flex flex-col gap-4">
-          <Form.Input
-            label="Contraseña"
-            name="password"
-            placeholder="Ingresa tu contraseña..."
-            type="password"
-          />
-          <Form.Input
-            label="Confirmar contraseña"
-            name="confirmPassword"
-            placeholder="Confirma tu contraseña..."
-            type="password"
-          />
-        </div>
-        <Form.SubmitButton buttonText="Cambiar contraseña" isLoading={isLoading} />
-      </Form>
-    </>
+    <Form
+      title="Cambiar tu contraseña"
+      onSubmit={changePassword}
+      description="Formulario para cambiar tu contraseña"
+    >
+      <div className="my-[10px] flex flex-col gap-4">
+        <Form.Input
+          label="Contraseña"
+          name="password"
+          placeholder="Ingresa tu contraseña..."
+          type="password"
+        />
+        <Form.Input
+          label="Confirmar contraseña"
+          name="confirmPassword"
+          placeholder="Confirma tu contraseña..."
+          type="password"
+        />
+      </div>
+      <Form.SubmitButton buttonText="Cambiar contraseña" isLoading={isLoading} />
+    </Form>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <ChangePasswordForm />
+    </Suspense>
   );
 }
