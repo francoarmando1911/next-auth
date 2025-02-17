@@ -46,7 +46,7 @@ export default function LoginPage() {
       />
       <Form.Footer 
         description="Te olvidaste tu contraseña: "
-        link='/forget-password'
+        link='/forwet-password'
         textLink="Recuperar contraseña"
       />
       <Form.Footer

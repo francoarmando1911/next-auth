@@ -12,7 +12,7 @@ export default function LoginPage() {
   const forwetPassword = async (formData: any) => {
     startLoading()
     await authFetch({
-      endpoint: 'forwet-password',
+      endpoint: 'forget-password',
       formData
     })
     finishLoading()
